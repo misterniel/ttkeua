@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonus Activated</title>
+
+<style>
+body {
+    margin:0;
+    font-family:-apple-system, Arial;
+    background:#f5f7fa;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+}
+
+.card {
+    width:100%;
+    max-width:420px;
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.logo {
+    width:70px;
+    margin-bottom:10px;
+}
+
+.success {
+    color:#16a34a;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.text {
+    font-size:14px;
+    color:#555;
+    margin-bottom:15px;
+    line-height:1.5;
+}
+
+.bonus {
+    background:#ecfdf5;
+    color:#065f46;
+    padding:16px;
+    border-radius:14px;
+    margin:20px 0;
+    font-weight:500;
+}
+
+.highlight {
+    font-size:22px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.list {
+    text-align:left;
+    margin-top:15px;
+}
+
+.list p {
+    margin:8px 0;
+    font-size:14px;
+}
+
+.timerBox {
+    margin-top:15px;
+    font-size:14px;
+    color:#b91c1c;
+    font-weight:bold;
+}
+
+.timer {
+    font-size:20px;
+    margin-top:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <img class="logo" src="images/0X46JL9X4iYT.png">
+
+    <div class="success">✔ Withdrawal in progress</div>
+
+    <div class="text">
+        Your withdrawal is being processed and will be sent shortly.
+    </div>
+
+    <div class="text">
+        All fees paid so far will be refunded along with your first withdrawal.
+    </div>
+
+    <div class="bonus">
+        🎁 We have unlocked an exclusive first-time bonus in the new event.
+    </div>
+
+    <div class="highlight">
+        Receive $350 today
+    </div>
+
+    <div class="list">
+        <p>✔ Your evaluations are now worth 2x</p>
+        <p>✔ You become a verified user</p>
+        <p>✔ No fees on your next withdrawal</p>
+        <p>✔ Bonus available immediately</p>
+    </div>
+
+    <div class="timerBox">
+        ⚠️ This bonus expires in:
+        <div class="timer" id="timer">03:00</div>
+    </div>
+
+    <div class="text">
+        Activate your bonus now to receive all benefits.
+    </div>
+
+    <!-- BOTÃO NOVO (SEM ALTERAÇÃO) -->
+    <div style="display:flex;justify-content:center;margin-top:15px;">
+
+<div style="display:flex;flex-direction:column;gap:12px;width:fit-content;font-family:inherit;" data-cooud-flow-root="">
+  <script type="application/json">{"steps":[{"title":"Verification","priceText":"$15.00","primary":{"id":"01KMRDX7R1TSCQAKAQ0ACVMJEQ","redirect":"https://campanhaspot.biz/up3","label":"Activate bonus now","style":"display: flex; align-items: center; justify-content: center; text-decoration: none; font-family: inherit; font-weight: 600; padding: 16px 24px; font-size: 17px; border-radius: 8px; background-color: #ff0040; color: #ffffff; border: none; width: 100%; cursor: pointer;"},"fallback":null,"dismiss":{"primary":{"label":"_","style":"display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-family: inherit; font-weight: 400; padding: 12px 20px; font-size: 15px; border-radius: 8px; background-color: transparent; color: #6b7280; border: none;  cursor: pointer;"},"fallback":{"label":"_","style":"display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-family: inherit; font-weight: 400; padding: 12px 20px; font-size: 15px; border-radius: 8px; background-color: transparent; color: #6b7280; border: none;  cursor: pointer;"}}}],"initialStep":0,"startInFallback":false,"processingText":"Processing...","noMoreOffersText":"Thank you! No more offers.","connectScriptUrl":"https://orbit.cooud.com/scripts/connect"}</script>
+  <button type="button" data-cooud-flow-primary="" data-connect-action="take" data-connect-id="01KMRDX7R1TSCQAKAQ0ACVMJEQ" data-connect-redirect="https://campanhaspot.biz/up3" style="display: flex; align-items: center; justify-content: center; text-decoration: none; font-family: inherit; font-weight: 600; padding: 16px 24px; font-size: 17px; border-radius: 8px; background-color: #ff0040; color: #ffffff; border: none; width: 100%; cursor: pointer;">
+    Activate bonus now
+  </button>
+  <button type="button" data-cooud-flow-dismiss="" data-connect-action="dismiss" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-family: inherit; font-weight: 400; padding: 12px 20px; font-size: 15px; border-radius: 8px; background-color: transparent; color: #6b7280; border: none;  cursor: pointer;">
+    _
+  </button>
+</div>
+
+<script src="https://js.stripe.com/v3/" async="" defer=""></script>
+<script src="https://orbit.cooud.com/scripts/flow" async="" defer=""></script>
+
+    </div>
+
+</div>
+
+<script>
+let time = 180;
+
+function updateTimer(){
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    document.getElementById("timer").innerText = `${minutes}:${seconds}`;
+
+    if(time > 0){
+        time--;
+    }
+}
+
+setInterval(updateTimer, 1000);
+</script>
+
+
+</body></html>
